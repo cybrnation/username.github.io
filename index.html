@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Sertifikat Yuklash</title>
+</head>
+<body>
+    <h1>Sertifikatingiz yuklanmoqda...</h1>
+    <script>
+        // URLdan cert_id ni olish
+        const urlParams = new URLSearchParams(window.location.search);
+        const certId = urlParams.get("cert_id");
+
+        // PDF faylning manzili (GitHub Pages’da joylashadi)
+        const pdfUrl = `certificates/${certId}.pdf`;
+
+        // PDFni avtomatik yuklash
+        window.location.href = pdfUrl;
+
+        // Agar yuklash ishlamasa, qo'lda yuklash havolasi
+        setTimeout(() => {
+            document.body.innerHTML += `<p>Yuklash boshlanmadimi? <a href="${pdfUrl}">Bu yerni bosing</a></p>`;
+        }, 2000);
+    </script>
+</body>
+</html>
